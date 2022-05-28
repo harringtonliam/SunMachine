@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Gridpoint))]
 public class Waypoint : MonoBehaviour
@@ -53,6 +54,11 @@ public class Waypoint : MonoBehaviour
 
     void OnMouseOver()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             PlaceTower();
